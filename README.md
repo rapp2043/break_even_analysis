@@ -21,7 +21,7 @@ The project is structured around a series of R scripts and an R Markdown documen
 - Survey analysis framework for post-transition assessments of learning quality and experience.
 
 ## Key Findings
-- The break-even point for the transition from ILT to CBT is achieved after the delivery of just three CBT sessions.
+- The break-even point for transitioning from ILT to CBT is achieved after delivering just *n* CBT sessions.
 - Cumulative savings increase exponentially with the delivery of additional CBT sessions.
 - A predictive savings model indicates significant long-term cost reductions while maintaining or improving training quality.
 
@@ -33,7 +33,7 @@ To replicate the analysis or adapt the methodology to a similar context:
 
 1. Clone the repository.
 2. Run the `cost_benefit_analysis.Rmd` in RStudio to generate the full report.
-3. Utilize the scripts in the `scripts/` directory for specific analytical tasks.
+3. Input your own data into the relevant vectors or input your own data frames or CSVs.
 
 ## Contributing
 Suggestions and contributions are welcome via pull requests or issues. Please ensure that any contributions are well-documented and include updated tests where necessary.
