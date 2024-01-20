@@ -2,7 +2,7 @@
 This repository contains the R scripts and documentation for a comprehensive cost-benefit analysis for transitioning a training program to eLearning. 
 
 ## Overview
-This repository contains the R scripts and documentation for a comprehensive cost-benefit analysis to support the decision-making process for transitioning a training program from Instructor-Led Training (ILT) to Computer-Based Training (CBT) modules. The analysis estimates redevelopment costs, operational savings, and the break-even point, focusing on maintaining or enhancing learning quality and experience.
+This repository contains the R scripts and documentation for a comprehensive cost-benefit analysis to support the decision-making process for transitioning a training program from Instructor-Led Training (ILT) to Computer-Based Training (CBT) modules. The analysis estimates redevelopment costs, operational savings, and the break-even point, focusing on maintaining or enhancing learning quality and experience. Notional data has been incorporated into the vectors for this repo to demonstrate the model's capability. 
 
 ## Repository Structure
 - `README.md`: Detailed project overview, including the methodology and key findings.
