@@ -1,0 +1,110 @@
+---
+title: "Cost-Benefit Analysis of Transitioning from Traditional Instructor-Led Training
+  to Computer-Based Training"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 2
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+---
+\
+\
+
+# 1. Overview
+
+This document outlines the cost-benefit analysis involved in transitioning select training modules from traditional Instructor-Led Training (ILT) to Computer-Based Training (CBT). It aims to identify the redevelopment costs, calculate the operational savings, and determine the break-even point, while also considering the effect on learning quality and participant experience.
+
+
+# 2. Methodology
+
+The analysis comprises three primary sections: determining the costs associated with redeveloping CBTs, estimating the operational savings gained by switching to CBTs, and evaluating the impact on learning quality and experience.
+
+
+## 2.1. Redevelopment Costs
+
+### 2.1.1. Definition of Variables
+
+-   **Trainer Cost per Hour (TCH):** The hourly rate for trainers involved in redevelopment, which is constant across all modules.
+-   **Number of Hours to Redevelop (NHR):** The estimated number of hours required to convert *i<sup>th</sup>* ILT modules into CBTs.  
+
+The total redevelopment cost (TRC) is calculated as:
+
+$$
+TRC = \sum_{i=1}^{n} NHR_i TCH   
+$$
+```{r setup, include=FALSE}
+# Define the redevelopment hours for each module and trainer's rate
+redevelopment_hours <- c(3, 4, 1, 2)
+trainer_rate <- 26
+```
+
+## 2.2 Savings from Transitioning to CBTs
+
+### 2.2.1. Definition of Variables
+
+-   **Number of ILT Modules Converted (NMC):** The total number of ILT modules transitioning to CBTs.
+-   **Hours per ILT Module for the i<sup>th</sup> module (HM<sub>i</sub>):** The duration required to deliver the i<sup>th</sup> ILT module.
+-   **Total Cost per Hour (TCH):** The hourly rate for trainers involved in redevelopment, which is constant across all modules.
+The total savings (TS) considering each module's specific hours and cost savings is calculated as:
+
+$$
+TS = \sum_{i=1}^{NMC} HM_iTCH
+$$
+```{r include=FALSE}
+# Calculate TRC and TS as before
+TRC <- sum(redevelopment_hours * trainer_rate)
+hours_saved_per_module <- rep(1, 4) # assuming 1 hour saved per module
+TS <- sum(hours_saved_per_module * trainer_rate)
+
+# Number of CBT sessions to project
+num_sessions <- 10
+
+# Calculate cumulative savings for each session
+cumulative_savings <- cumsum(rep(TS, num_sessions))
+```
+
+
+
+## 2.3 Break-Even Point Calculation
+The break-even point calculation (BEC) is the total redevelopment cost divided by the total savings, which is calculated as:
+
+$$
+BEC = \frac{TRC}{TS}
+$$
+This indicates the number of courses that need to be delivered in the CBT format to recover the redevelopment cost.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+# Create a data frame for plotting
+cbt_data <- data.frame(
+  Session = 1:num_sessions,
+  CumulativeSavings = cumulative_savings,
+  RedevelopmentCost = TRC
+)
+
+# Create the break-even plot
+library(ggplot2)
+break_even_plot <- ggplot(cbt_data, aes(x = Session)) +
+  geom_line(aes(y = CumulativeSavings), color = "blue", size = 1) +
+  geom_hline(aes(yintercept = RedevelopmentCost), color = "red", linetype = "dashed", size = 1) +
+  labs(
+    title = "CBT Break-Even Analysis",
+    x = "Number of CBT Sessions",
+    y = "Cumulative Savings ($)",
+    caption = "The dashed line represents the total redevelopment cost."
+  ) +
+  theme_bw () +
+  geom_point(aes(y = RedevelopmentCost), color = "red") +
+  geom_text(aes(x = 3, y = RedevelopmentCost, label = "Redevelopment Cost", vjust = -1))
+
+# Display the plot
+print(break_even_plot)
+```
+The chart demonstrates that the break-even point is reached after the third CBT session.From there, the cumulative savings continue to increase exponentially as more CBT sessions are delivered.
+
+# 3. Impact on Learning Quality and Experience
+Qualitative feedback will be gathered post-training via a survey to assess the impact on learning quality and experience. The survey will be administered to the participants of the CBTs and the results will be analyzed and a comparison analysis conducted with previous ILT-based survey data to determine the impact on learning quality and experience.
